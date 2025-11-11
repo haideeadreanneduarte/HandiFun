@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HandiFun: Gesture-Based 3D Shape Manipulation</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="appbar">
+    <div class="logo">HF</div>
+    <div>
+      <div class="title">HandiFun — 3D Editor</div>
+      <div class="subtitle">gesture-driven shape manipulation</div>
+    </div>
+  </header>
+
+  <video id="webcam" autoplay playsinline></video>
+  <canvas id="canvas"></canvas>
+  <div id="three-canvas"></div>
+
+  <div id="controls-panel">
+    <div>
+      <label for="shape-selector">Shape</label>
+      <select id="shape-selector">
+        <option value="cube">Cube</option>
+        <option value="pyramid">Pyramid</option>
+        <option value="sphere">Sphere</option>
+        <option value="cylinder">Cylinder</option>
+        <option value="cone">Cone</option>
+      </select>
+    </div>
+
+    <div class="control-row btn-group">
+      <button id="undo-btn" title="Undo">↶ Undo</button>
+      <button id="redo-btn" title="Redo">↷ Redo</button>
+    </div>
+
+    <div class="control-row btn-group">
+      <button id="reset-btn" title="Reset Shape">⟲ Reset</button>
+      <button id="export-btn" title="Export as OBJ">⬇ Export OBJ</button>
+      <button id="add-shape-btn" title="Add current shape to scene">＋ Add</button>
+    </div>
+
+    <div class="control-row">
+      <div style="flex:1;color:var(--muted);font-size:12px">
+        Tip: pinch a corner to move it, left-fist to rotate camera
+      </div>
+    </div>
+  </div>
+
+  <div id="bin-drop" title="Drag here to delete">
+    🗑
+    <svg width="64" height="64" viewBox="0 0 64 64" class="bin-ring" aria-hidden="true">
+      <circle cx="32" cy="32" r="26" class="ring-bg" />
+      <circle cx="32" cy="32" r="26" class="ring-fg" id="bin-progress" />
+    </svg>
+  </div>
+
+  <div id="color-control">
+    <canvas id="color-picker-canvas" width="150" height="150" aria-label="Color picker"></canvas>
+    <div class="current-color" id="current-color" title="Active color"></div>
+  </div>
+
+  <div id="links-para">
+    <strong>Instructions</strong>
+    <ul>
+      <li>Right hand: pinch to grab / move a corner</li>
+      <li>Pinch & drag inside the color wheel to pick color</li>
+      <li>Left hand: make a fist and move to rotate camera</li>
+        <li>To delete a placed shape: pinch-drag it onto the bin and release</li>
+    </ul>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
