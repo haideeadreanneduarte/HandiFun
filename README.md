@@ -1,5 +1,4 @@
-
-![Logo](handifun.png)
+<img src="handifun.png" alt="Logo" width="100%">
 An interactive learning tool that allows users to manipulate 3D shapes using hand gestures in real time. With the help of a webcam or motion sensor, it tracks hand movements and translates them into commands for rotating, resizing, or reshaping 3D objects. This makes learning geometry and spatial visualization more engaging, especially for students in fields that rely heavily on 3D concepts.
 
 ## 💡 Purpose
